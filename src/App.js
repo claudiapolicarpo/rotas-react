@@ -1,26 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <Router>
+      <div>
+        <h1>My Loves</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Eu tenho 2 dogs, qual gostaria de saber mais?
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/louis">Louis</Link>
+            </li>
+            <li>
+              <Link to="/lord">Lord</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/louis">
+            <Louis />
+          </Route>
+          <Route path="/lord">
+            <Lord />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+
+function Louis() {
+  return(
+    <div>
+      <h2>LOUIS</h2>
+      Idade: 4 anos<br /> 
+      Peso: 18,3<br />
+      Temperamento: Mandona, ciumenta e super amorosa <br />
+      <img src="louis.jpg" alt="" />
     </div>
   );
 }
 
-export default App;
+function Lord() {
+  return (
+    <div>
+      <h2>LORD</h2>
+      Idade: 4 anos <br />
+      Peso: 17,7 <br />
+      Temperamento: Brincalhão, aventureiro e lindo <br />
+      <img src="lord.jpg" alt=""></img>
+    </div>
+  );
+}
